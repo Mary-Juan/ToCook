@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCook.Web", "ToCook.Web\To
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCook.DataLayer", "ToCook.DataLayer\ToCook.DataLayer.csproj", "{68DD4D04-35D5-4666-833F-34971DC93AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer.Core", "DataLayer.Core\DataLayer.Core.csproj", "{0A16D971-1E8F-42EA-A9B4-90D1266692E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCook.Core", "DataLayer.Core\ToCook.Core.csproj", "{0A16D971-1E8F-42EA-A9B4-90D1266692E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

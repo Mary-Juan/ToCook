@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ToCook.Core.Services.Interfaces;
+using ToCook.Core.Services;
 using ToCook.DataLayer.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,11 @@ options.UseSqlServer(connectionString)
 
 #endregion
 
+#region IoC
+
+builder.Services.AddScoped<IUserService, UserService>();
+
+#endregion
 
 var app = builder.Build();
 
