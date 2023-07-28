@@ -25,19 +25,28 @@
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <div class="clientarea">
-                            <div class="loggein hidden">
-                                <i class="zmdi zmdi-account"></i><a href=""> ایمان مدائنی ، خوش آمدی </a>
-                            </div>
-                            <div class="signin">
-                                <i class="zmdi zmdi-account"></i>
-                                <a href=""> ورود </a> /
-                                <a href=""> عضویت </a>
-                            </div>
+                          @if (User.Identity.IsAuthenticated)
+                          {
+                              <div class="loggein">
+                                  <i class="zmdi zmdi-account"></i><a href=""> @User.Identity.Name ، خوش آمدی </a>
+                                  /
+                                  <a href="/Logout"> خروج </a>
+                                  </div>
+                          }
+                          else
+                          {
+                              <div class="signin">
+                                  <i class="zmdi zmdi-account"></i>
+                                  <a href="/Login"> ورود </a> /
+                                  <a href="/Register"> عضویت </a>
+                              </div> 
+                          }
+                      
                         </div>
                     </div>
                 </div>
             </nav>
-            @RenderSection("SearchBox",false)
+            @RenderSection("SearchBox", false)
         </div>
     </div>
 
@@ -53,5 +62,8 @@
 
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+
 </body>
 </html>

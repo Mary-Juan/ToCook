@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ToCook.Core.Services.Interfaces;
 using ToCook.Core.Services;
 using ToCook.DataLayer.Context;
+using ToCook.Core.Convertors;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,24 @@ options.UseSqlServer(connectionString)
 #region IoC
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IViewRenderService, RenderViewToString>();
+
+#endregion
+
+#region Authentication
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Loguot";
+    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
 
 #endregion
 
